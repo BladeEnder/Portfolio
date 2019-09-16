@@ -11,7 +11,6 @@
     {
 
         return $this->render('projects/index.html.twig');
-
     }
 }
 ?>
