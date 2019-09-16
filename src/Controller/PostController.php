@@ -12,5 +12,24 @@
 
         return $this->render('projects/index.html.twig');
     }
+
+
+    /**
+     * @Route("/project/{id}", name="listproject")
+     */
+    public function seeProject($id)
+    {
+        
+        return $this->render('projects/index.html.twig');
+    }
+
+    /**
+     * @Route("/connexion", name="connexion")
+     */
+    public function connexion()
+    {
+
+        return $this->render('projects/connexion.html.twig');
+    }
 }
 ?>
