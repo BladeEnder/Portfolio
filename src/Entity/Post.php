@@ -31,6 +31,10 @@ class Post
      * @ORM\Column(type="text")
      */
    private $image;
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $git;
 
     public function getId()
     {
@@ -52,9 +56,26 @@ class Post
         $this->title = $title;
     }
 
-    public function setBody()
+    public function setBody($body)
     {
         $this->body = $body;
     }
+    public function getImage()
+    {
+        return $this->image;
+    }
 
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+    public function getGit()
+    {
+        return $this->git;
+    }
+
+    public function setGit($git)
+    {
+        $this->git = $git;
+    }
 }

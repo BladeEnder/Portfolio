@@ -1,9 +1,36 @@
 {% extends 'base.html.twig' %}
-{% block title %}Les projets{% endblock %}
+{% block title %}Accueil{% endblock %}
 {%block body%}
-    {% for post in posts%}
-    <article>
-        
-    </article>
-    {% endfor %}
+    <div class="jumbotron col-sm-6 offset-sm-3 text-center mt-5">
+  <h1 class="display-3">Hello, world!</h1>
+    Made with <span style="color: #e25555;">&#9829;</span> in France
+
+
+  <p id="presentation" class="lead"></p>
+  <hr class="my-4">
+  <p class="lead">
+  <a href="https://github.com/BladeEnder"><img width="50px" height="50px" src="http://127.0.0.1/Portfolio/public/img/github.svg"/></a>
+  <a href="https://www.freecodecamp.org/bladeender"><img width="50px" height="50px" src="http://127.0.0.1/Portfolio/public/img/freecodecamp.svg"/></a>
+  <br>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Plus ...</a>
+  </p>
+</div>
+
 {%endblock%}
+
+{% block javascripts %}
+<script>
+var i = 0;
+var txt = 'Bienvenu sur mon portfolio je suis un étudiant en informatique et vous retrouverez ici certaine de mes créations dont ce portfolio fait avec Symfony.';
+var speed = 50;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("presentation").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+typeWriter();
+</script>
+{% endblock %}

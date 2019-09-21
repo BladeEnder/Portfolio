@@ -1,0 +1,15 @@
+{% extends 'base.html.twig'%}
+{% block title %}Liste des projets{% endblock %}
+{% block body %}
+{% for proj in project%}
+    <div class="card mt-5 mx-auto" style="width: 18rem;">
+  <img class="card-img-top" src="{{proj.image}}" alt="Un projet">
+  <div class="card-body">
+    <h5 class="card-title">{{proj.title}}</h5>
+    <p class="card-text">{{proj.body}}</p>
+    <a href="#" class="btn btn-github"><i class="fa fa-github "style="font-size:24px"></i> GITHUB</a>
+  </div>
+</div>
+    {% endfor %}
+
+{% endblock %}

@@ -21,20 +21,30 @@
         return $this->render('projects/index.html.twig',array('posts' => $posts));
     }
     /**
+     * @Route("/project/projectslist", name="projectlist")
+     */
+    public function listproject()
+    {
+        $project = $this->getDoctrine()->getRepository(Post::class)->findAll();
+        return $this->render('projects/projectslist.html.twig',array('project' => $project));
+    }
+    /**
      * @Route("/project/new", name="addproject")
      */
     public function addProject(Request $request)
     {
         $post = new Post();
         $form = $this->createFormBuilder($post)
-        ->add('name', TextType::class, array('label' => 'Pseudo','attr'=>
-        array('class'=> 'form-control')))
-        ->add('password', TextType::class, array(
+        ->add('title', TextType::class, array('label' => 'Titre','attr'=>array('class'=> 'form-control')))
+        ->add('body', TextareaType::class, array(
             'required' =>false,
-            'label' => 'Mot de passe',
-            'attr' => array('class'=> 'form-control', 'type'=>'password')
-    ))
-        ->add('save',SubmitType::class, array('label' => 'Connexion',
+            'label' => 'Présentation',
+            'attr' => array('class'=> 'form-control')))
+        ->add('image', TextType::class, array('label' => 'Image','attr'=>
+            array('class'=> 'form-control')))
+        ->add('git', TextType::class, array('required' => false,'label' => 'Github','attr'=>
+            array('class'=> 'form-control')))
+        ->add('save',SubmitType::class, array('label' => 'Ajouter',
         'attr' => array('class' => 'btn btn-primary mt-3')))
         ->getForm();
 
@@ -46,7 +56,7 @@
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);
             $entityManager->flush();
-           // return $this->redirectToRoute('home');
+            return $this->redirectToRoute('projectlist');
         }
         return $this->render('projects/new.html.twig',array(
             'form' => $form->createView()));
